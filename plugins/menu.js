@@ -15,14 +15,14 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
     try {
         // Loading animation sequence
         const loadingMessages = [
-            "🔄 Initializing KHAN-MD... [10%]",
+            "🔄 Initializing THARUSHA... [10%]",
             "⚙️ Loading Core Systems... [30%]",
             "🌐 Connecting to Servers... [60%]",
             "🚀 Finalizing Menu... [90%]",
             "✅ Ready! Displaying Menu... [100%]"
         ];
 
-        let loadingMsg = await reply("🎉 Starting KHAN-MD Menu...");
+        let loadingMsg = await reply("🎉 Starting THARUSHA-MD Menu...");
         for (let i = 0; i < loadingMessages.length; i++) {
             await new Promise(resolve => setTimeout(resolve, 800));
             await conn.sendMessage(from, { 
@@ -92,14 +92,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             },
             { quoted: mek }
         );
-
-        // Send audio with a slight delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        await conn.sendMessage(from, {
-            audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
-            mimetype: 'audio/mp4',
-            ptt: true
-        }, { quoted: mek });
         
     } catch (e) {
         console.log(e);
