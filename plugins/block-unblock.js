@@ -31,7 +31,7 @@ async (conn, m, { reply, q, react }) => {
     try {
         await conn.updateBlockStatus(jid, "block");
         await react("✅");
-        reply(`Successfully blocked @${jid.split("@")[0]}`, { mentions: [jid] });
+        reply(`🔒Successfully blocked @${jid.split("@")[0]}`, { mentions: [jid] });
     } catch (error) {
         console.error("Block command error:", error);
         await react("❌");
@@ -70,7 +70,7 @@ async (conn, m, { reply, q, react }) => {
     try {
         await conn.updateBlockStatus(jid, "unblock");
         await react("✅");
-        reply(`Successfully unblocked @${jid.split("@")[0]}`, { mentions: [jid] });
+        reply(`🔓Successfully unblocked @${jid.split("@")[0]}`, { mentions: [jid] });
     } catch (error) {
         console.error("Unblock command error:", error);
         await react("❌");
