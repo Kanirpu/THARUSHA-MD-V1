@@ -4,7 +4,7 @@ const { cmd } = require("../command");
 cmd({
   pattern: "fb",
   alias: ["facebook", "fbdl"],
-  desc: "Download Facebook videos",
+  desc: "Download Facebook videos as animation",
   category: "download",
   filename: __filename,
   use: "<Facebook URL>",
@@ -27,15 +27,20 @@ cmd({
       return reply("❌ Failed to fetch the video. Please try another link.");
     }
 
-    // Send the video to the user
-    const videoUrl = data.data.url;
+    // Send the video as an animation (GIF-like effect)
+    const mediaUrl = data.data.url;
     await conn.sendMessage(from, {
-      video: { url: videoUrl },
-      caption: "📥 *Facebook Video Downloaded*\n\n- Powered By JawadTechX ✅",
+      document: { url: mediaUrl, mimetype: 'video/mp4' }, // Using document to mimic animation
+      fileName: 'fb_animation.mp4',
+      caption: "🎞️ *THARUSHA-MD Facebook Downloader*\n\n- Powered By JawadTechX ✅",
+      gifPlayback: true, // Enables GIF-like playback if supported
     }, { quoted: m });
+
+    // Success react
+    await conn.sendMessage(from, { react: { text: '✅', key: m.key } });
 
   } catch (error) {
     console.error("Error:", error); // Log the error for debugging
-    reply("❌ Error fetching the video. Please try again.");
+    reply("❌ Error fetching the animation. Please try again.");
   }
 });
