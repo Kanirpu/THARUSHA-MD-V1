@@ -6,16 +6,16 @@ const axios = require('axios');
 
 cmd({
     pattern: "menu2",
-    desc: "Displays the bot's main menu with interactive reply options",
+    desc: "බොට්ගේ ප්‍රධාන මෙනුව පෙන්වයි",
     category: "menu2",
     react: "⚡",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        // Check if the message is a reply with a number
-        if (quoted && q && !isNaN(q)) {
-            const menuNumber = parseInt(q);
+        // Reply handling for menu selection
+        if (quoted && q && !isNaN(q.trim())) {
+            const menuNumber = parseInt(q.trim());
             let menuCommand;
             switch (menuNumber) {
                 case 1: menuCommand = "quranmenu"; break;
@@ -34,41 +34,41 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
                 case 14: menuCommand = "othermenu"; break;
                 case 15: menuCommand = "logo"; break;
                 case 16: menuCommand = "repo"; break;
-                default: return reply("Invalid menu number! Please reply with a number between 1 and 16.");
+                default: return reply("වලංගු නොවන මෙනු අංකයකි! කරුණාකර 1 සිට 16 දක්වා අංකයක් යවන්න.");
             }
-            // Trigger the corresponding menu command
-            return conn.sendMessage(from, { text: `.${menuCommand}` }, { quoted: mek });
+            // Trigger the selected menu command
+            await conn.sendMessage(from, { text: `.${menuCommand}` }, { quoted: mek });
+            return;
         }
 
         // Main menu display
         let dec = `╭═════ *${config.BOT_NAME}* ═════⊷
-│✨ *Welcome, ${pushname}!* ✨
-│➤ *Owner*: ${config.OWNER_NAME}
+│🌟 *Welcome, ${pushname}!* 🌟
+│➤ *owner*: ${config.OWNER_NAME}
 │➤ *Baileys*: Multi Device
-│➤ *Type*: NodeJs
+│➤ *type*: NodeJs
 │➤ *Platform*: Heroku
 │➤ *Mode*: ${config.MODE}
 │➤ *Prefix*: ${config.PREFIX}
-│➤ *Version*: 3.0.0 Bᴇᴛᴀ
+│➤ *vershion*: 3.0.0 Bᴇᴛᴀ
 ╰═══════════════════⊷
-
-╭═════ *Menu Options* ═════⊷
-│ *Reply with a number to view:*
-│ 1. Quran Menu
-│ 2. Prayer Time
-│ 3. AI Menu
-│ 4. Anime Menu
+╭═════ *Menu options* ═════⊷
+│ *Reply a number:*
+│ 1. Quran menu
+│ 2. Convert menu
+│ 3. AI menu
+│ 4. Anime menu
 │ 5. Reactions
-│ 6. Convert Menu
-│ 7. Fun Menu
-│ 8. Download Menu
-│ 9. List Commands
-│ 10. Main Menu
-│ 11. Group Menu
-│ 12. All Menu
-│ 13. Owner Menu
-│ 14. Other Menu
-│ 15. Logo Menu
+│ 6. Convert menu
+│ 7. Fun menu
+│ 8. Download menu
+│ 9. Command list
+│ 10. Main menu
+│ 11. Group menu
+│ 12. All menu
+│ 13. Owner menu
+│ 14. Other menu
+│ 15. Logo menu
 │ 16. Repository
 ╰═══════════════════⊷
 
@@ -94,30 +94,30 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         );
 
         // Send audio
-        await conn.sendMessage(from, {
+      /*  await conn.sendMessage(from, {
             audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
             mimetype: 'audio/mp4',
             ptt: true
-        }, { quoted: mek });
+        }, { quoted: mek });*/
         
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
 cmd({
     pattern: "logo",
     alias: ["logomenu"],
-    desc: "Displays the logo menu",
+    desc: "ලෝගෝ මෙනුව පෙන්වයි",
     category: "menu",
     react: "🧃",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Logo Menu* ═════⊷
-│✨ *Available Logo Styles* ✨
+        let dec = `╭═════ *Logo menu* ═════⊷
+│🌟 *Logo command* 🌟
 │➤ neonlight
 │➤ blackpink
 │➤ dragonball
@@ -172,21 +172,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
 cmd({
     pattern: "reactions",
-    desc: "Shows the reaction commands",
+    desc: "Reaction විධාන පෙන්වයි",
     category: "menu",
     react: "💫",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, reply }) => {
     try {
-        let dec = `╭═════ *Reactions Menu* ═════⊷
-│✨ *Available Reactions* ✨
+        let dec = `╭═════ *Reactions menu* ═════⊷
+│🌟 *Reactions command* 🌟
 │➤ bully @tag
 │➤ cuddle @tag
 │➤ cry @tag
@@ -237,22 +237,21 @@ async (conn, mek, m, { from, quoted, reply }) => {
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// dlmenu
 cmd({
     pattern: "dlmenu",
-    desc: "Displays the download menu",
+    desc: "Download මෙනුව පෙන්වයි",
     category: "menu",
     react: "⤵️",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Download Menu* ═════⊷
-│✨ *Available Download Commands* ✨
+        let dec = `╭═════ *Download menu* ═════⊷
+│🌟 *Download command* 🌟
 │➤ facebook
 │➤ mediafire
 │➤ tiktok
@@ -318,22 +317,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// group menu
 cmd({
     pattern: "groupmenu",
-    desc: "Displays the group menu",
+    desc: "Group මෙනුව පෙන්වයි",
     category: "menu",
     react: "⤵️",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Group Menu* ═════⊷
-│✨ *Available Group Commands* ✨
+        let dec = `╭═════ *Group menu* ═════⊷
+│🌟 *Group command* 🌟
 │➤ grouplink
 │➤ kickall
 │➤ kickall2
@@ -393,22 +391,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// fun menu
 cmd({
     pattern: "funmenu",
-    desc: "Displays the fun menu",
+    desc: "Fun මෙනුව පෙන්වයි",
     category: "menu",
     react: "😎",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Fun Menu* ═════⊷
-│✨ *Available Fun Commands* ✨
+        let dec = `╭═════ *Fun menu* ═════⊷
+│🌟 *Fun commands* 🌟
 │➤ shapar
 │➤ rate
 │➤ insult
@@ -457,22 +454,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// other menu
 cmd({
     pattern: "othermenu",
-    desc: "Displays the other menu",
+    desc: "වෙනත් මෙනුව පෙන්වයි",
     category: "menu",
     react: "🤖",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Other Menu* ═════⊷
-│✨ *Available Other Commands* ✨
+        let dec = `╭═════ *Other menu* ═════⊷
+│🌟 *Other commands* 🌟
 │➤ timenow
 │➤ date
 │➤ count
@@ -526,22 +522,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// main menu
 cmd({
     pattern: "mainmenu",
-    desc: "Displays the main menu",
+    desc: "ප්‍රධාන මෙනුව පෙන්වයි",
     category: "menu",
     react: "🗿",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Main Menu* ═════⊷
-│✨ *Available Main Commands* ✨
+        let dec = `╭═════ *Main commands* ═════⊷
+│🌟 *Main command* 🌟
 │➤ ping
 │➤ live 
 │➤ alive
@@ -576,22 +571,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// owner menu
 cmd({
     pattern: "ownermenu",
-    desc: "Displays the owner menu",
+    desc: "Owner මෙනුව පෙන්වයි",
     category: "menu",
     react: "🔰",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Owner Menu* ═════⊷
-│✨ *Available Owner Commands* ✨
+        let dec = `╭═════ *Owner menu* ═════⊷
+│🌟 *Owner command* 🌟
 │➤ owner
 │➤ menu
 │➤ menu2
@@ -633,22 +627,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// convert menu
 cmd({
     pattern: "convertmenu",
-    desc: "Displays the convert menu",
+    desc: "Convert මෙනුව පෙන්වයි",
     category: "menu",
     react: "🥀",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Convert Menu* ═════⊷
-│✨ *Available Convert Commands* ✨
+        let dec = `╭═════ *Convert menu* ═════⊷
+│🌟 *Convert commands* 🌟
 │➤ sticker
 │➤ sticker2
 │➤ emojimix
@@ -692,22 +685,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
 
-// anime menu 
 cmd({
     pattern: "animemenu",
-    desc: "Displays the anime menu",
+    desc: "Anime මෙනුව පෙන්වයි",
     category: "menu",
     react: "🧚",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *Anime Menu* ═════⊷
-│✨ *Available Anime Commands* ✨
+        let dec = `╭═════ *Anime menu* ═════⊷
+│🌟 *Anime commands* 🌟
 │➤ fack
 │➤ dog
 │➤ awoo
@@ -758,22 +750,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`❌😭දෝෂයක් ඇතිවුණා eror: ${e.message || e}`);
     }
 });
 
-// ai menu 
 cmd({
     pattern: "aimenu",
-    desc: "Displays the AI menu",
+    desc: "AI මෙනුව පෙන්වයි",
     category: "menu",
     react: "🤖",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = `╭═════ *AI Menu* ═════⊷
-│✨ *Available AI Commands* ✨
+        let dec = `╭═════ *AI menu* ═════⊷
+│🌟 *AI commands* 🌟
 │➤ ai
 │➤ gpt3
 │➤ gpt2
@@ -814,6 +805,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.log(e);
-        reply(`Error: ${e}`);
+        reply(`දෝෂයක් ඇතිවුණා: ${e.message || e}`);
     }
 });
