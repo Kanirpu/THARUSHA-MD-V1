@@ -25,6 +25,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃★│ Version : *3.0.0 Bᴇᴛᴀ*
 ┃★╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
+
 ╭━━〔 *Download Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• facebook
@@ -70,6 +71,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• tiks
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Group Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• grouplink
@@ -109,6 +111,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• tagadmins
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Reactions Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• bully @tag
@@ -139,6 +142,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• cringe @tag
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Logo List* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• neonlight
@@ -174,6 +178,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• birthday
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Owner Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• owner
@@ -196,6 +201,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• jid
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Fun Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• shapar
@@ -224,6 +230,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• poke
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Convert Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• sticker
@@ -247,6 +254,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• readmore
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Ai Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• ai
@@ -267,6 +275,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• copilot
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Main Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• ping
@@ -283,6 +292,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• restart
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Anime Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• fack
@@ -315,6 +325,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• naruto
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
+
 ╭━━〔 *Other Menu* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• timenow
@@ -348,20 +359,20 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• ytv
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
-> ${config.DESCRIPTION}`;
+${config.DESCRIPTION}`;
 
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/7zfdcq.jpg` },
+                image: { url: `https://i.ibb.co/2xmrZRG/4920.jpg` },
                 caption: dec,
                 contextInfo: {
                     mentionedJid: [m.sender],
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363354023106228@newsletter',
-                        newsletterName: 'JawadTechX',
+                        newsletterJid: '120363411607943828@newsletter',
+                        newsletterName: '𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰-𝙼𝙳',
                         serverMessageId: 143
                     }
                 }
@@ -370,11 +381,11 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         );
 
         // Send audio
-        await conn.sendMessage(from, {
+       /*await conn.sendMessage(from, {
             audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
             mimetype: 'audio/mp4',
             ptt: true
-        }, { quoted: mek });
+        }, { quoted: mek });*/
         
     } catch (e) {
         console.log(e);
