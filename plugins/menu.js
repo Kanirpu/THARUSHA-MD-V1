@@ -51,6 +51,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 │➤ *Prefix*: ${config.PREFIX}
 │➤ *Version*: 3.0.0 Bᴇᴛᴀ
 ╰═══════════════════⊷
+
 ╭═════ *Menu Options* ═════⊷
 │ *Reply with a number to view:*
 │ 1. Quran Menu
@@ -70,7 +71,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 │ 15. Logo Menu
 │ 16. Repository
 ╰═══════════════════⊷
-> *Powered by 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰-𝙼𝙳*`;
+
+> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
 
         await conn.sendMessage(
             from,
