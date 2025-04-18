@@ -20,13 +20,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             "✅ System Ready! [100%]"
         ];
 
-        let loadingMsg = await reply("📟 Initializing THARUSHA-MD Status...");
-        for (let i = 0; i < loadingMessages.length; i++) {
+        // Send initial loading message
+        let loadingMsg = await conn.sendMessage(from, { text: loadingMessages[0] }, { quoted: mek });
+
+        // Update loading messages
+        for (let i = 1; i < loadingMessages.length; i++) {
             await new Promise(resolve => setTimeout(resolve, 600));
-            await conn.sendMessage(from, { 
-                text: loadingMessages[i], 
-                edit: loadingMsg.key 
-            }, { quoted: mek });
+            if (loadingMsg && loadingMsg.key) {
+                await conn.sendMessage(from, { 
+                    text: loadingMessages[i], 
+                    edit: loadingMsg.key 
+                }, { quoted: mek });
+            } else {
+                // Fallback if loadingMsg is undefined
+                loadingMsg = await conn.sendMessage(from, { text: loadingMessages[i] }, { quoted: mek });
+            }
         }
 
         // Modified alive message
@@ -72,13 +80,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
     } catch (e) {
         console.error("Error in alive command:", e);
-        reply(`❌ Eror එකක් එනවා පැන්චො 😭: ${e.message}`);
+        await reply(`❌ Eror එකක් එනවා පැන්චො 😭: ${e.message}`);
     }
 });
 
-//Created By Mr.Tharusha Sandipa
-
-
-
-
-
+// Created By Mr. Tharusha Sandipa
