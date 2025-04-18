@@ -24,7 +24,7 @@ async (conn, mek, m, { from, reply }) => {
 ⚠️ _${article.description}_
 🔗 _${article.url}_
 
-  ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ Jᴀᴡᴀᴅ TᴇᴄʜX
+> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*
             `;
 
             console.log('Article URL:', article.urlToImage); // Log image URL for debugging
