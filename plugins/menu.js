@@ -44,20 +44,21 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• Repo
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
-> ${config.DESCRIPTION}`;
+
+> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
 
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/7zfdcq.jpg` },
+                image: { url: `https://i.ibb.co/2xmrZRG/4920.jpg` },
                 caption: dec,
                 contextInfo: {
                     mentionedJid: [m.sender],
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363354023106228@newsletter',
-                        newsletterName: 'JawadTechX',
+                        newsletterJid: '120363411607943828@newsletter',
+                        newsletterName: '𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰-𝙼𝙳',
                         serverMessageId: 143
                     }
                 }
