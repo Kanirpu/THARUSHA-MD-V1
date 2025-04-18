@@ -114,11 +114,11 @@ const port = process.env.PORT || 9090;
   
   let up = `*THARUSHA-MD CONNECTED SUCCESFULL✅*
   
-*❯❯ SUBSCRIBE YT CHANNEL:-* (https://www.youtube.com/@THARUSHASANDIPA-x5g)
-> ------------------------------------------------
-*❯❯ FOLLOW WHATSAPP CHANNEL:-*(https://whatsapp.com/channel/0029Vb4eZqo3bbV0lTGjFn2S)
- 
-> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
+  *❯❯ SUBSCRIBE YT CHANNEL:-* (https://www.youtube.com/@THARUSHASANDIPA-x5g)
+  > ------------------------------------------------
+  *❯❯ FOLLOW WHATSAPP CHANNEL:-*(https://whatsapp.com/channel/0029Vb4eZqo3bbV0lTGjFn2S)
+  
+  > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
     conn.sendMessage(conn.user.id, { image: { url: `https://i.ibb.co/2xmrZRG/4920.jpg` }, caption: up })
   }
   })
