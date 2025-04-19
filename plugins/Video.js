@@ -4,7 +4,7 @@ const DY_SCRAP = require('@dark-yasiya/scrap');
 const dy_scrap = new DY_SCRAP();
 
 function replaceYouTubeID(url) {
-    const regex = /(?:youtube\.com\/(?:.*v=|.*\/)|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
+    const regex = /(?:youtube\.com\/(?:.*v=|.*\/래|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
     const match = url.match(regex);
     return match ? match[1] : null;
 }
@@ -69,7 +69,7 @@ cmd({
             `2️⃣.3️⃣ - 360p\n` +
             `2️⃣.4️⃣ - 480p\n\n` +
             `💡 *Reply with your choice (e.g., 1.1 or 2.1)*\n\n` +
-            `> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
+            `${config.FOOTER || "POWERED BY YOUR BOT NAME"}`;
 
         const sentMsg = await conn.sendMessage(from, { image: { url: image }, caption: info }, { quoted: mek });
         const messageID = sentMsg.key.id;
@@ -94,12 +94,21 @@ cmd({
                     return await reply("❌ Invalid choice! Reply with 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, or 2.4.");
                 }
 
-                // Find the matching quality from available qualities
+                // Flexible quality matching
                 const qualities = videoDetails.result.qualities;
-                const selectedQuality = qualities.find(q => q.quality.toLowerCase().includes(selectedOption.quality.toLowerCase()));
-                if (!selectedQuality?.url) return await reply(`❌ ${selectedOption.quality} quality not available for this video!`);
+                const normalizedQualities = qualities.map(q => ({
+                    ...q,
+                    quality: q.quality.toLowerCase().replace(/\s/g, '')
+                }));
 
-                const msg = await conn.sendMessage(from, { text: "⏳ Wait..." }, { quoted: mek });
+                const targetQuality = selectedOption.quality.toLowerCase().replace(/\s/g, '');
+                const selectedQuality = normalizedQualities.find(q => q.quality.includes(targetQuality));
+
+                if (!selectedQuality?.url) {
+                    return await reply(`❌ ${selectedOption.quality} quality not available for this video! Try another quality.`);
+                }
+
+                const msg = await conn.sendMessage(from, { text: `⏳ Processing ${selectedOption.quality} ${selectedOption.type}...` }, { quoted: mek });
 
                 let type;
                 if (selectedOption.type === 'video') {
@@ -112,14 +121,14 @@ cmd({
                 await conn.sendMessage(from, { text: `✅ ${selectedOption.quality} ${selectedOption.type.charAt(0).toUpperCase() + selectedOption.type.slice(1)} Upload Successful ✅`, edit: msg.key });
 
             } catch (error) {
-                console.error(error);
-                await reply(`❌ *An error occurred while processing:* ${error.message || "Error!"}`);
+                console.error('Reply processing error:', error);
+                await reply(`❌ *An error occurred while processing:* ${error.message || "Unknown error!"}`);
             }
         });
 
     } catch (error) {
-        console.error(error);
+        console.error('Main try-catch error:', error);
         await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
-        await reply(`❌ *An error occurred:* ${error.message || "Error!"}`);
+        await reply(`❌ *An error occurred:* ${error.message || "Failed to process the request!"}`);
     }
 });
