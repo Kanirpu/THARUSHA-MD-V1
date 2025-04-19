@@ -166,7 +166,7 @@ const path = require('path');
 // YouTube Data API key (Get from Google Cloud Console)
 const searchOptions = {
     maxResults: 1,
-    key: 'YOUR_YOUTUBE_API_KEY' // Replace with your API key
+    key: 'https://apis.davidcyriltech.my.id/download/ytmp4?url=' // Replace with your API key
 };
 
 // Function to extract YouTube video ID from URL
