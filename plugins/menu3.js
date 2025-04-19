@@ -1,10 +1,7 @@
-const { readEnv } = require('../config');
+const config = require('../config'); // readEnv භාවිතා කරන්නේ නැතුව සෘජුවම config ආනයනය කරනවා
 const { cmd, commands } = require('../command');
 const os = require("os");
 const { runtime } = require('../lib/functions');
-
-// config ලෝඩ් කරනවා
-const config = readEnv(); // මෙන්න මේ රේඛාව එකතු කරලා තියෙන්නේ
 
 cmd({
     pattern: "menu3",
