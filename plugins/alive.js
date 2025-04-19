@@ -19,7 +19,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• *📟 Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
 ┃◈┃• *⚙️ HostName*: ${os.hostname()}
 ┃◈┃• *👨‍💻 Owner*: 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰 𝚂𝙰𝙽𝙳𝙸𝙿𝙰
-┃◈┃• *🧬 Version*: 3.0.0 BETA
+┃◈┃• *🧬 Version*: 1.0.0 BETA
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 
