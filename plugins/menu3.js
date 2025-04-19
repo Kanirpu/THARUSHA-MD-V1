@@ -31,10 +31,9 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 *├ 5 • OWNER*
 *├ 6 • FUN*
 *╰╼╼╼╼╼╼╼╼╼╼●●►*
+*🌟 Reply with the Number you want to select*
 
-_*🌟 Reply with the Number you want to select*_
-
-> *𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 your Botname*`;
+> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`;
 
         const vv = await conn.sendMessage(from, { image: { url: config.MENU_IMG }, caption: desc }, { quoted: mek });
 
