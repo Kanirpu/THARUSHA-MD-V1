@@ -48,7 +48,7 @@ function getCurrentConfig() {
         DESCRIPTION: process.env.DESCRIPTION || '*㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*',
         ALIVE_IMG: process.env.ALIVE_IMG || 'https://i.ibb.co/nMC42B30/497.jpg',
         MENU_IMG: process.env.MENU_IMG || 'https://i.ibb.co/2xmrZRG/4920.jpg',
-        ALIVE_MSG: process.env.ALIVE_MSG || 'Default alive message',
+        ALIVE_MSG: process.env.ALIVE_MSG || 'Default live message',
         READ_MESSAGE: process.env.READ_MESSAGE || 'false',
         AUTO_REACT: process.env.AUTO_REACT || 'false',
         ANTI_BAD: process.env.ANTI_BAD || 'false',
@@ -142,9 +142,10 @@ cmd({
 
         // Custom text input එක බලාගන්න
         let awaitingTextInput = null;
+        let hasProcessed = false; // Flag to ensure one-time processing
 
         // User reply එක බලන්න
-        conn.ev.once('messages.upsert', async (messageUpdate) => {
+        const handler = async (messageUpdate) => {
             try {
                 const mekInfo = messageUpdate?.messages[0];
                 if (!mekInfo?.message) return;
@@ -152,8 +153,9 @@ cmd({
                 const messageType = mekInfo?.message?.conversation || mekInfo?.message?.extendedTextMessage?.text;
                 const isReplyToSentMsg = mekInfo?.message?.extendedTextMessage?.contextInfo?.stanzaId === messageID;
 
-                if (!isReplyToSentMsg) return;
+                if (!isReplyToSentMsg || hasProcessed) return;
 
+                hasProcessed = true; // Mark as processed
                 const userReply = messageType.trim();
 
                 // Custom text input එකක් බලාපොරොත්තු වෙනවද බලන්න
@@ -162,6 +164,8 @@ cmd({
                     updateConfigEnv(key, userReply);
                     await conn.sendMessage(from, { text: `✅ *${key}* updated to: ${userReply}` }, { quoted: mek });
                     awaitingTextInput = null;
+                    // Cleanup listener after processing
+                    conn.ev.off('messages.upsert', handler);
                     return;
                 }
 
@@ -171,7 +175,9 @@ cmd({
                 );
 
                 if (!selectedOption) {
-                    return await reply("❌ invalid number! Please Valid number send (examle: 1.1, 2.1).");
+                    await reply("❌ වැරදි number එකක්! Valid number එකක් එවන්න (උදා: 1.1, 2.1).");
+                    conn.ev.off('messages.upsert', handler);
+                    return;
                 }
 
                 const newValue = selectedOption.options[userReply];
@@ -179,19 +185,27 @@ cmd({
                 // String setting නම් custom text ඉල්ලන්න
                 if (selectedOption.type === 'string' && newValue === 'Custom') {
                     awaitingTextInput = { key: selectedOption.key };
-                    await conn.sendMessage(from, { text: `📝 *${selectedOption.label}* send for new value .` }, { quoted: mek });
+                    await conn.sendMessage(from, { text: `📝 *${selectedOption.label}* සඳහා new value එක එවන්න.` }, { quoted: mek });
+                    hasProcessed = false; // Allow further processing for text input
                     return;
                 }
 
-                // Config update කරන්න්
+                // Config update කරන්න
                 updateConfigEnv(selectedOption.key, newValue);
                 await conn.sendMessage(from, { text: `✅ *${selectedOption.label}* updated to: ${newValue}` }, { quoted: mek });
 
+                // Cleanup listener after processing
+                conn.ev.off('messages.upsert', handler);
+
             } catch (error) {
                 console.error('Settings update error:', error);
-                await reply(`❌ *Error:* ${error.message || "Settings update කරන්න බැරි වුණා😪!"}`);
+                await reply(`❌ *Error එකක් ආවා:* ${error.message || "Settings update කරන්න බැරි වුණා!"}`);
+                conn.ev.off('messages.upsert', handler);
             }
-        });
+        };
+
+        // Event listener එක register කරන්න
+        conn.ev.on('messages.upsert', handler);
 
     } catch (error) {
         console.error('Main settings error:', error);
