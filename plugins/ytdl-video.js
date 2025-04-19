@@ -3,7 +3,7 @@ const { cmd } = require('../command');
 const yts = require('yt-search');
 
 cmd({
-    pattern: "video2",
+    pattern: "video",
     alias: ["mp4", "song"],
     react: "🎥",
     desc: "Download video from YouTube",
