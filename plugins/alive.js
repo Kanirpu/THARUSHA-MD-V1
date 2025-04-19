@@ -3,7 +3,7 @@ const os = require("os");
 const { runtime } = require('../lib/functions');
 
 cmd({
-    pattern: "alive2",
+    pattern: "alive",
     alias: ["status", "runtime", "uptime"],
     desc: "Check uptime and system status",
     category: "main",
@@ -51,7 +51,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 const {cmd , commands} = require('../command')
 
 cmd({
-    pattern: "alive",
+    pattern: "alive2",
     react: "🌐",
     desc: "Check bot online or no.",
     category: "main",
