@@ -1,7 +1,11 @@
-const {readEnv} = require('../config')
-const {cmd , commands} = require('../command')
-const os = require("os")
-const {runtime} = require('../lib/functions')
+const { readEnv } = require('../config');
+const { cmd, commands } = require('../command');
+const os = require("os");
+const { runtime } = require('../lib/functions');
+
+// config ලෝඩ් කරනවා
+const config = readEnv(); // මෙන්න මේ රේඛාව එකතු කරලා තියෙන්නේ
+
 cmd({
     pattern: "menu3",
     desc: "bot's commands",
@@ -32,7 +36,7 @@ _*🌟 Reply with the Number you want to select*_
 
 > *𝙋𝙊𝙒𝙀𝙍𝙀𝘿 𝘽𝙔 your Botname*`;
 
-        const vv = await conn.sendMessage(from, { image: { url: config.MENU_IMG}, caption: desc }, { quoted: mek });
+        const vv = await conn.sendMessage(from, { image: { url: config.MENU_IMG }, caption: desc }, { quoted: mek });
 
         conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
@@ -43,7 +47,7 @@ _*🌟 Reply with the Number you want to select*_
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === vv.key.id) {
                 switch (selectedOption) {
                     case '1':
-                    reply(`
+                        reply(`
 ╭─━─〔 ⚡ *𝐌𝐀𝐈𝐍 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒* ⚡ 〕━━╮  
 ┃ ◈ *alive*
 ┃ ◈ *menu* 
@@ -55,9 +59,7 @@ _*🌟 Reply with the Number you want to select*_
 ╰─━─━─━─━─━─━─━─━─●●► 
  
  > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*  
-
 `);
-
                         break;
                     case '2':               
                         reply(`
@@ -87,9 +89,7 @@ _*🌟 Reply with the Number you want to select*_
 ╰─━─━─━─━─━─━─━─━─━─●●►  
 
 > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*  
-
 `);
-                    
                         break;
                     case '4':               
                         reply(`
@@ -118,7 +118,7 @@ _*🌟 Reply with the Number you want to select*_
 
 > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*  
 `);
-                    break;
+                        break;
                     case '5':               
                         reply(`
 ╭─━〔 🍿 *𝐎𝐖𝐍𝐄𝐑 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒* 🍿 〕━──━╮ 
@@ -134,9 +134,8 @@ _*🌟 Reply with the Number you want to select*_
 ╰─━━─━─━──━─━─━━─━─●●►
  
  > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*
-
 `);
-                    break;
+                        break;
                     case '6':               
                         reply(`
 ╭─━〔 🍿 *𝐓𝐎𝐎𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒* 🍿 〕━──━╮ 
@@ -153,22 +152,17 @@ _*🌟 Reply with the Number you want to select*_
 ╰─━━─━─━──━─━─━━─━─●●►  
 
 > *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*  
-
 `);
-                       
-                        
-                    break;
+                        break;
                     default:
-                    
-                        reply("Invalid option. Please select a valid option🔴");
+                        reply("ඔබ තෝරාගත් ඔප්ෂන් එක වැරදියි. කරුණාකර වලංගු ඔප්ෂන් එකක් තෝරන්න🔴");
                 }
-
             }
         });
 
     } catch (e) {
         console.error(e);
-        await conn.sendMessage(from, { react: { text: '❌', key: mek.key } })
-        reply('An error occurred while processing your request.');
+        await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
+        reply('ඔබේ ඉල්ලීම ක්‍රියාත්මක කිරීමේදී දෝෂයක් ඇතිවුණා.');
     }
 });
