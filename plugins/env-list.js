@@ -10,7 +10,7 @@ function isEnabled(value) {
 
 cmd({
     pattern: "env",
-    alias: ["setting", "allvar"],
+    alias: ["allvar"],
     desc: "Settings of bot",
     category: "menu",
     react: "⤵️",
