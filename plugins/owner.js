@@ -29,34 +29,34 @@ async (conn, mek, m, { from }) => {
 
         // Send the owner contact message with image and audio
         await conn.sendMessage(from, {
-            image: { url: 'https://files.catbox.moe/149k8x.jpg' }, // Image URL from your request
-            caption: `╭━━〔 *KHAN-MD* 〕━━┈⊷
-┃◈╭─────────────·๏
-┃◈┃• *Here is the owner details*
-┃◈┃• *Name* - ${ownerName}
-┃◈┃• *Number* ${ownerNumber}
-┃◈┃• *Version*: 2.0.0 Beta
-┃◈└───────────┈⊷
+            image: { url: 'https://i.ibb.co/jkQNLN1Q/7872.jpg' }, // Image URL from your request
+            caption: `╭━━〔 *THARUSHA-MD* 〕━━┈⊷
+┃◈
+┃◈ *Here is the owner details*
+┃◈ *Name* - ${ownerName}
+┃◈ *Number* ${ownerNumber}
+┃◈ *Version*: 1.0.0 Beta
 ╰──────────────┈⊷
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ Jᴀᴡᴀᴅ TᴇᴄʜX`, // Display the owner's details
+
+> *㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*`, // Display the owner's details
             contextInfo: {
                 mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`], 
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363354023106228@newsletter',
-                    newsletterName: 'JawadTechX',
+                    newsletterJid: '120363411607943828@newsletter',
+                    newsletterName: '𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰-𝙼𝙳',
                     serverMessageId: 143
                 }            
             }
         }, { quoted: mek });
 
         // Send audio as per your request
-        await conn.sendMessage(from, {
+        /*await conn.sendMessage(from, {
             audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' }, // Audio URL
             mimetype: 'audio/mp4',
             ptt: true
-        }, { quoted: mek });
+        }, { quoted: mek });*/
 
     } catch (error) {
         console.error(error);
