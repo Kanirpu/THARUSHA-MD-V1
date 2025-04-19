@@ -21,7 +21,7 @@ OWNER_NAME: process.env.OWNER_NAME || "Tharusha Sandipa",// add bot owner name
 DESCRIPTION: process.env.DESCRIPTION || "*㋛ 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰  〽️Ｄ*",// add bot owner name    
 ALIVE_IMG: process.env.ALIVE_IMG || "https://i.ibb.co/nMC42B30/497.jpg",// add img for alive msg
 MENU_IMG:process.env.MENU_IMG || "https://i.ibb.co/2xmrZRG/4920.jpg",//add image for menu msg
-LIVE_MSG: process.env.LIVE_MSG || "👋  𝐇𝐈, 亗『  ${pushname} 』亗 𝐈❜𝐌 𝐀𝐋𝐈𝐕𝐄 𝐍𝐎𝐖 👤\n*╭─「 ᴅᴀᴛᴇ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ 」*\n*│*📅 *`Date`*: ${date}\n*│*⏰ *`Time`*: ${time}\n*╰──────────●●►*\n\n*╭─「 ꜱᴛᴀᴛᴜꜱ ᴅᴇᴛᴀɪʟꜱ 」*\n*│*👤 *`User`*: 亗『 ${pushname} 』亗\n*│*✒️ *`Prefix`*: .\n*│*🧬 *`Version`*: 1.0.0\n*│*🎈 *`Platform`*: Linux\n*│*📡 *`Host`*: heroku\n*│*📟 *`Uptime`*: ${runtime(process.uptime())}\n*╰──────────●●►*\n\n*╭──────────●●►*\n*│* *Hello , I am alive now!!*\n*╰──────────●●►* \n\n > © ᴘᴏᴡᴇʀᴅ ʙʏ ᴛʜᴀʀᴜꜱʜᴀ -〽️Ｄ",// add alive msg here 
+ALIVE_MSG: process.env.ALIVE_MSG || "👋  𝐇𝐈, 亗『  ${pushname} 』亗 𝐈❜𝐌 𝐀𝐋𝐈𝐕𝐄 𝐍𝐎𝐖 👤\n*╭─「 ᴅᴀᴛᴇ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ 」*\n*│*📅 *`Date`*: ${date}\n*│*⏰ *`Time`*: ${time}\n*╰──────────●●►*\n\n*╭─「 ꜱᴛᴀᴛᴜꜱ ᴅᴇᴛᴀɪʟꜱ 」*\n*│*👤 *`User`*: 亗『 ${pushname} 』亗\n*│*✒️ *`Prefix`*: .\n*│*🧬 *`Version`*: 1.0.0\n*│*🎈 *`Platform`*: Linux\n*│*📡 *`Host`*: heroku\n*│*📟 *`Uptime`*: ${runtime(process.uptime())}\n*╰──────────●●►*\n\n*╭──────────●●►*\n*│* *Hello , I am alive now!!*\n*╰──────────●●►* \n\n > © ᴘᴏᴡᴇʀᴅ ʙʏ ᴛʜᴀʀᴜꜱʜᴀ -〽️Ｄ",// add alive msg here 
 READ_MESSAGE: process.env.READ_MESSAGE || "false",// Turn true or false for automatic read msgs
 AUTO_REACT: process.env.AUTO_REACT || "false",// make this true or false for auto react on all msgs
 ANTI_BAD: process.env.ANTI_BAD || "false",// false or true for anti bad words  
